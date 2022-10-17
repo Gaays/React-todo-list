@@ -1,0 +1,18 @@
+.app {
+
+  text-align: center;
+}
+
+.todo-box {
+  width: 500px;
+  text-align: center;
+
+  .todo-list {
+    border: 1px solid #000;
+    min-height: 10px
+  }
+
+  .state-box {
+    display: flex;
+  }
+}

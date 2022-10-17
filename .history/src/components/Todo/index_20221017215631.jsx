@@ -46,13 +46,12 @@ export default class Todo extends Component {
   }
 
   handleDelete = (ids) => {
+    console.log('🚀 ~ Todo ~ handleDelete ~ ids', ids);
     let list = this.state.list.slice()
     if (typeof ids === 'number') {
       list = list.filter(item => item.id !== ids)
     } else if (Array.isArray(ids)) {
-      list = list.filter(item => {
-        return ids.indexOf(item.id) === -1;
-      });
+      list = list.filter(item => ids.indexOf(item.id) === -1)
     }
 
     this.setState(() => {
@@ -62,8 +61,7 @@ export default class Todo extends Component {
   }
 
   removeDone = () => {
-    const doneList = this.state.list.filter(item => item.check === true).map(item => item.id)
-
+    const doneList = this.state.list.filter(item => item.check === true)
     this.handleDelete(doneList)
   }
 
@@ -114,6 +112,7 @@ export default class Todo extends Component {
 
     let deleteDoneBtn = null
     if (this.getDoneCount > 0) {
+      console.log(123)
       deleteDoneBtn = <div className="remove-btn" onClick={this.removeDone}>删除已完成任务</div>
     }
 

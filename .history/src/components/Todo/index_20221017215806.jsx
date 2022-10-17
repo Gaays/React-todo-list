@@ -50,9 +50,11 @@ export default class Todo extends Component {
     if (typeof ids === 'number') {
       list = list.filter(item => item.id !== ids)
     } else if (Array.isArray(ids)) {
+      console.log(ids);
       list = list.filter(item => {
         return ids.indexOf(item.id) === -1;
       });
+      console.log('🚀 ~ Todo ~ handleDelete ~ list', list);
     }
 
     this.setState(() => {
@@ -62,8 +64,7 @@ export default class Todo extends Component {
   }
 
   removeDone = () => {
-    const doneList = this.state.list.filter(item => item.check === true).map(item => item.id)
-
+    const doneList = this.state.list.filter(item => item.check === true)
     this.handleDelete(doneList)
   }
 

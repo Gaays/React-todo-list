@@ -1,0 +1,31 @@
+.todo-item {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  padding: 10px;
+  line-height: 40px;
+  background-color: #fff;
+  transition: 0.2s background-color ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgb(188, 186, 186);
+  }
+
+  .check-item {
+    margin-right: 10px;
+  }
+
+  .remove-btn {
+    width: 40px;
+    height: 30px;
+    line-height: 30px;
+    margin-left: auto;
+    margin-right: 0;
+    border: 1px solid red;
+    border-radius: 4px;
+    background-color: red;
+    color: #fff;
+    cursor: pointer;
+  }
+}

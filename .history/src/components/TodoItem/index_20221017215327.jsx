@@ -9,10 +9,7 @@ export default class TodoItem extends Component {
   }
 
   deleteItem = () => {
-    const confirm = window.confirm('确定需要删除？')
-    if (confirm) {
-      this.props.handleDelete(this.props.data.id)
-    }
+    this.props.handleDelete(this.props.data.id)
   }
 
   render() {

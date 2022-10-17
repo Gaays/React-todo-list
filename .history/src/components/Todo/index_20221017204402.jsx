@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import './index.scss'
+import './index.css'
 import TodoItem from '../TodoItem'
 
 
@@ -20,7 +20,7 @@ class TodoInput extends Component {
   render() {
     return (
       <div>
-        <input className="todo-input" type="text" value={this.state.label} onChange={this.handleInput} onKeyUp={this.handleSubmit} placeholder="请输入你的任务名称，按回车确认" />
+        <input type="text" value={this.state.label} onChange={this.handleInput} onKeyUp={this.handleSubmit} placeholder="请输入你的任务名称，按回车确认" />
       </div>
     );
   }
@@ -32,41 +32,13 @@ export default class Todo extends Component {
     checkAll: false
   }
   addListItem = (label) => {
-    if (label !== '') {
-      const id = Number(new Date())
-      let list = this.state.list.slice()
-      list.unshift({ label: label, id: id, check: false })
-      this.setState(() => {
-        return { list: list }
-      })
-    } else {
-      window.alert("请输入内容后再提交")
-    }
-
-  }
-
-  handleDelete = (ids) => {
+    const id = Number(new Date())
     let list = this.state.list.slice()
-    if (typeof ids === 'number') {
-      list = list.filter(item => item.id !== ids)
-    } else if (Array.isArray(ids)) {
-      list = list.filter(item => {
-        return ids.indexOf(item.id) === -1;
-      });
-    }
-
+    list.unshift({ label: label, id: id, check: false })
     this.setState(() => {
       return { list: list }
     })
-
   }
-
-  removeDone = () => {
-    const doneList = this.state.list.filter(item => item.check === true).map(item => item.id)
-
-    this.handleDelete(doneList)
-  }
-
   changeState = (id, state) => {
     const newList = this.state.list.slice()
     const item = newList.find(item => item.id === id)
@@ -104,28 +76,16 @@ export default class Todo extends Component {
 
 
   render() {
-    let todoList = null;
-    if (this.state.list.length > 0) {
-      const itemlist = this.state.list.map((item) => {
-        return <TodoItem data={item} key={item.id} changeState={this.changeState} handleDelete={this.handleDelete} />
-      })
-      todoList = <div className="todo-list">{itemlist}</div>
-    }
-
-    let deleteDoneBtn = null
-    if (this.getDoneCount > 0) {
-      deleteDoneBtn = <div className="remove-btn" onClick={this.removeDone}>删除已完成任务</div>
-    }
-
-
+    const todoList = this.state.list.map((item) => {
+      return <TodoItem data={item} key={item.id} changeState={this.changeState} />
+    })
     return (
-      <div className="todo-box">
+      <div>
         <TodoInput submit={this.addListItem} />
-        {todoList}
+        <div className="todo-list">{todoList}</div>
         <div className="state-box">
-          <input className="check-all" type="checkbox" checked={this.state.checkAll} onChange={this.handleCheckAll} />
+          <input type="checkbox" checked={this.state.checkAll} onChange={this.handleCheckAll} />
           <div>已完成{this.getDoneCount} / 未完成{this.getUndoneCount}</div>
-          {deleteDoneBtn}
         </div>
       </div>
     )

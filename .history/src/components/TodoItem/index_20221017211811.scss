@@ -1,0 +1,16 @@
+.todo-item {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  line-height: 40px;
+  background-color: #fff;
+  transition: 0.2s background-color ease-in-out;
+
+  &:hover {
+    background-color: rgb(188, 186, 186);
+  }
+
+  .check-item {
+    margin-right: 10px;
+  }
+}

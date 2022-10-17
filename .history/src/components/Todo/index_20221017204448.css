@@ -1,0 +1,10 @@
+.todo-box {
+  text-align: center;
+  .todo-list {
+    border: 1px solid #000;
+  }
+
+  .state-box {
+    display: flex;
+  }
+}

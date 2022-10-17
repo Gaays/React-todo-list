@@ -1,0 +1,19 @@
+.todo-box {
+  width: 500px;
+  border: 1px solid #000;
+  padding: 10px;
+  text-align: center;
+
+  .todo-input {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .todo-list {
+    border: 1px solid #000;
+  }
+
+  .state-box {
+    display: flex;
+  }
+}
